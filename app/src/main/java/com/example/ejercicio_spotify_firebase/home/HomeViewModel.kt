@@ -26,18 +26,18 @@ class HomeViewModel : ViewModel() {
 //        repeat(20){
 //            loadData()
 //        }
-        getArtists()
+       getArtists()
     }
 
-//    private fun loadData() {
-//        val random = (1..10000).random()
-//        val artist = Artist(
-//            name = "Random $random",
-//            description = " Description randomd",
-//            image = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.outsideonline.com%2Fculture%2Factive-families%2Fhow-to-read-dog-body-language-happy-aggressive%2F&psig=AOvVaw2_iGet7J5UpGsdV7OFWQi5&ust=1744456286383000&source=images&opi=89978449"
-//        )
-//        db.collection("artists").add(artist)
-//    }
+    private fun loadData() {
+        val random = (1..10000).random()
+        val artist = Artist(
+            name = "Random $random",
+            description = " Description randomd",
+            image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFUAfyVe3Easiycyh3isP9wDQTYuSmGPsPQvLIJdEYvQ_DsFq5Ez2Nh_QjiS3oZ3B8ZPfK9cZQyIStmQMV1lDPLw"
+            )
+        db.collection("artists").add(artist)
+    }
 
     private fun getArtists() {
         viewModelScope.launch {
