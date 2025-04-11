@@ -39,7 +39,7 @@ import okhttp3.internal.wait
 
 @Preview
 @Composable
-fun InitialScreen() {
+fun InitialScreen(navigateToLoin: () -> Unit = {}, navegateToSignUp: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,7 +49,7 @@ fun InitialScreen() {
         Spacer(modifier = Modifier.weight(1f))
         Image(
             painter = painterResource(id = R.drawable.spotify),
-            contentDescription = "spsotify",
+            contentDescription = "Spotify",
             modifier = Modifier.clip(CircleShape)
         )
 
@@ -69,7 +69,7 @@ fun InitialScreen() {
         )
         Spacer(modifier = Modifier.weight(1f))
         Button(
-            onClick = {},
+            onClick = { navegateToSignUp() },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
@@ -80,29 +80,43 @@ fun InitialScreen() {
             Text(text = "Sign up free", color = Black)
         }
         Spacer(modifier = Modifier.height(8.dp))
-        CustomButton(Modifier.clickable {  }, painterResource(id=R.drawable.google),"Google")
+        CustomButton(
+            Modifier.clickable { },
+            painterResource(id = R.drawable.google),
+            "Continue wiht Google"
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        CustomButton(Modifier.clickable {  }, painterResource(id=R.drawable.facebook),"Facebook")
-        Text(text="Log in",color=Color.White, modifier = Modifier.padding(24.dp))
+        CustomButton(
+            Modifier.clickable { },
+            painterResource(id = R.drawable.facebook),
+            "Continue with Facebook"
+        )
+        Text(
+            text = "Log in",
+            color = Color.White,
+            modifier = Modifier
+                .padding(24.dp)
+                .clickable { navigateToLoin() },
+            fontWeight = FontWeight.Bold
+        )
         Spacer(modifier = Modifier.weight(1f))
-
 
 
     }
 
 }
+
 @Composable
-fun CustomButton(modifier: Modifier, painter:Painter, title:String){
+fun CustomButton(modifier: Modifier, painter: Painter, title: String) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .height(48.dp)
             .padding(horizontal = 32.dp)
             .background(BackgroundButton)
-            .border(2.dp, ShapeButton, CircleShape)
-        , contentAlignment = Alignment.CenterStart
+            .border(2.dp, ShapeButton, CircleShape), contentAlignment = Alignment.CenterStart
 
-    ){
+    ) {
         Image(
             painter = painter,
             contentDescription = "",
